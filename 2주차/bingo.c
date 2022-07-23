@@ -8,6 +8,7 @@ int main(void) {
   // 철수가 쓴 수와 사회자가 부르는 순서가 있으면 몇번째 수에 빙고를 외치게 되나?
 
   int chulsoo[5][5] = {0,};
+  int mc[5][5] = {0,};
   
 
   //철수가 쓴 것
@@ -18,13 +19,17 @@ int main(void) {
   }
   
   //사회자
+  for(int i=0; i<5; i++){
+  for(int j=0; j<5; j++){
+    scanf("%d", &mc[i][j]);
+    }
+  }
 
   int order=0;
-  
   for(int i=0; i<5; i++){
     for(int j=0; j<5; j++){
       int a;
-      scanf("%d", &a);
+      a=mc[i][j];
       order++;
 
       for(int k=0; k<5; k++){
@@ -88,3 +93,4 @@ int main(void) {
   }
   return 0;
 }
+
