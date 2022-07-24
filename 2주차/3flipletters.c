@@ -7,7 +7,7 @@ int main(void) {
 
   fgets(input, sizeof(input), stdin);
 
-  for (int i = strlen(input); i >= 0; i--) {
+  for (int i = strlen(input)-1; i >= 0; i--) {
     printf("%c", input[i]);
   }
 
