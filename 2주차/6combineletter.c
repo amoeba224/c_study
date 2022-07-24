@@ -10,8 +10,8 @@ int main(void) {
   fgets(B, sizeof(B), stdin);
 
   int cnt=0;
-  for(int i=0; i<=strlen(A); i++){
-    for(int j=0; j<=strlen(B); j++){
+  for(int i=0; i<strlen(A); i++){
+    for(int j=0; j<strlen(B); j++){
       if(A[i+j] == B[j]){
         cnt++;
       } else break;
@@ -25,3 +25,4 @@ int main(void) {
 
   return 0;
 }
+
