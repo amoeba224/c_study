@@ -2,7 +2,7 @@
 
 int n;
 int num = 0;
-int idx = 1;
+int idx = 0;
 
 void getResult(int x) {
   int j = x - 1;
@@ -14,11 +14,13 @@ void getResult(int x) {
       if (num == 0) {
         if (j >= k) {
           printf("%d+%d\n", j, k);
+          idx++;
         } else {
           break;
         }
       } else {
         printf("%d+%d", j, k);
+        idx++;
         for (int m = 1; m <= num; m++) {
           printf("+1");
         }
@@ -28,7 +30,6 @@ void getResult(int x) {
     num++;
     getResult(x - 1);
   }
-  idx++;
 }
 
 int main() {
