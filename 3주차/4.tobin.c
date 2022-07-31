@@ -1,39 +1,36 @@
 #include <stdio.h>
-int n;
-int num[100];
-int cnt = 0;
+
+int n, k;
+int num[30];
 
 void getResult(int x, int y) {
-	if (x == n) {
-		cnt++;
-		printf("%d", num[0]);
-		for (int i = 1; i < y; i++){
-			printf("+%d", num[i]);
+  if(x>=n){
+    if(y == k) {
+      for(int i=0; i<n; i++){
+        printf("%d", num[i]);
+      }printf("\n");
     }
-		printf("\n");
-	}
-	if (x > n)
-		return;
-
-	for (int i = n - 1; i >= 1; i--) {
-		if (y == 0) {
-			num[y] = i;
-			getResult(x + i, y + 1);
-			num[y] = 0;
-		}
-		else {
-			if (num[y - 1] >= i) {
-				num[y] = i;
-				getResult(x + i, y + 1);
-				num[y] = 0;
-			}
-		}
-	}
+    else
+      return;
+  } else { // x<n
+    if (y>=k){
+      for(int i=0; i<n; i++){
+        printf("%d", num[i]);
+      }printf("\n");
+    }
+    else { // y<n
+      num[x] = 1;
+      getResult(x+1, y+1);
+      num[x] = 0;
+      getResult(x+1, y);
+    }
+  }
 }
 
 int main() {
-	scanf("%d", &n);
-	getResult(0, 0);
-	printf("%d", cnt);
-	return 0;
+  scanf("%d %d", &n, &k);
+
+  getResult(0, 0);
+
+  return 0;
 }
