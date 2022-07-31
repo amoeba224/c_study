@@ -3,26 +3,26 @@
 int n, k;
 int num[30];
 
-void getResult(int x) {
-  if (k > 0) {
-    for (int i = x; i <= x + n - k; i++) {
-      num[i] = 1;
-      if (x < k) {
-        for (int j = 1; j <= k; j++) {
-        }
-        getResult(x + 1);
-        x++;
-      } else {
-        for (int m = 1; m <= n; m++) {
-          printf("%d", num[m]);
-        }
-      }
-      printf("\n");
-      num[i] = 0;
+void getResult(int x, int y) {
+  if(x>=n){
+    if(y == k) {
+      for(int i=0; i<n; i++){
+        printf("%d", num[i]);
+      }printf("\n");
     }
-  } else {
-    for (int m = 1; m <= n; m++) {
-      printf("%d", num[m]);
+    else
+      return;
+  } else { // x<n
+    if (y>=k){
+      for(int i=0; i<n; i++){
+        printf("%d", num[i]);
+      }printf("\n");
+    }
+    else { // y<n
+      num[x] = 1;
+      getResult(x+1, y+1);
+      num[x] = 0;
+      getResult(x+1, y);
     }
   }
 }
@@ -30,11 +30,7 @@ void getResult(int x) {
 int main() {
   scanf("%d %d", &n, &k);
 
-  for (int i = 0; i <= n; i++) {
-    num[i] = 0;
-  }
-
-  getResult(1);
+  getResult(0, 0);
 
   return 0;
 }
